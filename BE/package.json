@@ -1,0 +1,24 @@
+{
+  "name": "be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "  tsc -b && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/typescript": "^0.4.29",
+    "anthropic": "^0.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
