@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Terminal, Github } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
-import Response from './pages/Response';
+import {Response} from './pages/Response';
 
 function Header() {
   return (

@@ -11,9 +11,10 @@ interface FileNodeProps {
   item: FileItem;
   depth: number;
   onFileClick: (file: FileItem) => void;
+  selectedPath: string | null;
 }
 
-function FileNode({ item, depth, onFileClick }: FileNodeProps) {
+function FileNode({ item, depth, onFileClick, selectedPath }: FileNodeProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
@@ -24,10 +25,16 @@ function FileNode({ item, depth, onFileClick }: FileNodeProps) {
     }
   };
 
+  const isSelected = item.type === 'file' && item.path === selectedPath;
+
   return (
     <div className="select-none">
       <div
-        className="flex items-center gap-2 p-2 hover:bg-gray-800 rounded-md cursor-pointer"
+        className={`flex items-center gap-2 p-2 rounded-md cursor-pointer ${
+          isSelected
+            ? 'bg-white/10 text-white'
+            : 'text-white/70 hover:bg-white/5 hover:text-white'
+        }`}
         style={{ paddingLeft: `${depth * 1.5}rem` }}
         onClick={handleClick}
       >
@@ -55,6 +62,7 @@ function FileNode({ item, depth, onFileClick }: FileNodeProps) {
               item={child}
               depth={depth + 1}
               onFileClick={onFileClick}
+              selectedPath={selectedPath}
             />
           ))}
         </div>
@@ -64,6 +72,13 @@ function FileNode({ item, depth, onFileClick }: FileNodeProps) {
 }
 
 export function FileExplorer({ files, onFileSelect }: FileExplorerProps) {
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+
+  const handleFileClick = (file: FileItem) => {
+    setSelectedFile(file.path);
+    onFileSelect(file);
+  };
+
   return (
     <div className="bg-gray-900 rounded-lg shadow-lg p-4 h-full overflow-auto">
       <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-100">
@@ -76,7 +91,8 @@ export function FileExplorer({ files, onFileSelect }: FileExplorerProps) {
             key={`${file.path}-${index}`}
             item={file}
             depth={0}
-            onFileClick={onFileSelect}
+            onFileClick={handleFileClick}
+            selectedPath={selectedFile}
           />
         ))}
       </div>
