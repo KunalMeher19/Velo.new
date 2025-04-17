@@ -248,10 +248,10 @@ export function Response() {
               transition={{ delay: 0.4 }}
               className="flex items-start gap-3"
             >
-              <div className="w-6 h-6 rounded-full flex items-center justify-center text-sm">
-                ✅
-              </div>
-              <p className="text-white/70">
+              <p className="text-white/70 flex items-center justify-center text-sm">
+                <div className="w-6 h-6 rounded-full ">
+                  ✅
+                </div>
                 <StepsList
                   steps={steps}
                   currentStep={currentStep}
@@ -357,7 +357,7 @@ export function Response() {
 
                 {/* Editor Area */}
                 <div className="flex-1">
-                <CodeEditor file={selectedFile} />
+                  <CodeEditor file={selectedFile} />
                 </div>
               </div>
             ) : (
