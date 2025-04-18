@@ -15,10 +15,10 @@ function Home() {
 
   return (
     <motion.main 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="container mx-auto px-4 py-16 flex flex-col items-center"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 1, ease: 'easeIn' } }}
+      exit={{ opacity: 0, y: -30, transition: { duration: 1, ease: 'easeIn' } }}
+      className="container mx-auto px-28 py-44 flex flex-col items-center justify-center"
     >
       <h1 className="text-4xl md:text-6xl font-bold text-center mb-6">
         The AI-powered <br />
@@ -37,7 +37,7 @@ function Home() {
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
-            placeholder="Ask anything about your code..."
+            placeholder="Describe the website you want to build..."
             className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 pr-12 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all"
           />
           <button

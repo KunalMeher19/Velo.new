@@ -249,9 +249,6 @@ export function Response() {
               className="flex items-start gap-3"
             >
               <p className="text-white/70 flex items-center justify-center text-sm">
-                <div className="w-6 h-6 rounded-full ">
-                  ✅
-                </div>
                 <StepsList
                   steps={steps}
                   currentStep={currentStep}

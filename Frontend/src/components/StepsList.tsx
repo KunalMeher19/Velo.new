@@ -25,11 +25,11 @@ export function StepsList({ steps, currentStep, onStepClick }: StepsListProps) {
           >
             <div className="flex items-center gap-2">
               {step.status === 'completed' ? (
-                <CheckCircle className="w-5 h-5 text-green-500" />
+                <CheckCircle className="w-6 h-6 rounded-full text-green-500" />
               ) : step.status === 'in-progress' ? (
-                <Clock className="w-5 h-5 text-blue-400" />
+                <Clock className="w-6 h-6 rounded-full text-blue-400" />
               ) : (
-                <Circle className="w-5 h-5 text-gray-600" />
+                <Circle className="w-6 h-6 rounded-full text-gray-600" />
               )}
               <h3 className="font-medium text-gray-100">{step.title}</h3>
             </div>
