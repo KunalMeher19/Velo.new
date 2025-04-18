@@ -202,8 +202,8 @@ export function Response() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1, ease: 'easeIn' } }}
+      exit={{ opacity: 0, transition: { duration: 1, ease: 'easeIn' } }}
       className="container mx-auto px-4 py-8"
     >
       <div className="flex gap-6">
@@ -216,8 +216,8 @@ export function Response() {
           <div className="space-y-4 mb-6">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
+              animate={{ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' } }}
+              transition={{ delay: 0.2, transition: { duration: 0.5, ease: 'easeIn' } }}
               className="flex items-start gap-3"
             >
               <div className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center text-sm">
@@ -230,8 +230,8 @@ export function Response() {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
+              animate={{ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' } }}
+              transition={{ delay: 0.4, transition: { duration: 0.5, ease: 'easeIn' } }}
               className="flex items-start gap-3"
             >
               <div className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center text-sm">
@@ -244,8 +244,8 @@ export function Response() {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
+              animate={{ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' }}}
+              transition={{ delay: 0.4, transition: { duration: 0.5, ease: 'easeIn' } }}
               className="flex items-start gap-3"
             >
               <p className="text-white/70 flex items-center justify-center text-sm">
