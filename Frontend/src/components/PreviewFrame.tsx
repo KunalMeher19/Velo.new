@@ -7,39 +7,24 @@ interface PreviewFrameProps {
 }
 
 export function PreviewFrame({ files, webContainer }: PreviewFrameProps) {
+  // In a real implementation, this would compile and render the preview
   const [url, setUrl] = useState("");
 
-  const main = React.useCallback(async () => {
-    const storedUrl = localStorage.getItem("previewUrl");
-    if (storedUrl) {
-      setUrl(storedUrl);
+  async function main() {
+    if (!webContainer) {
+      console.warn("WebContainer not initialized.");
+      return;
     }
-
-    const installProcess = await webContainer.spawn('npm', ['install']);
-
-    installProcess.output.pipeTo(new WritableStream({
-      write(data) {
-        console.log(data);
-      }
-    }));
-
     await webContainer.spawn('npm', ['run', 'dev']);
-
-    // Wait for `server-ready` event
-    webContainer.on('server-ready', (port, generatedUrl) => {
-      console.log(generatedUrl);
-      console.log(port);
-
-      if (generatedUrl !== storedUrl) {
-        setUrl(generatedUrl);
-        localStorage.setItem("previewUrl", generatedUrl);
-      }
+    webContainer.on('server-ready', (port, url) => {
+      console.log(port, url);
+      setUrl(url);
     });
-  }, [webContainer]);
-
+  }
+  
   useEffect(() => {
-    main();
-  }, [main, files]);
+    main()
+  }, [])
 
   return (
     <div className="h-full flex items-center justify-center text-gray-400">

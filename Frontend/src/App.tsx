@@ -11,7 +11,7 @@ function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Terminal className="w-6 h-6" />
-          <span className="font-bold text-xl">Bolt</span>
+          <span className="font-bold text-xl"></span>
         </div>
         <a
           href="https://github.com/stackblitz/bolt"
@@ -27,14 +27,14 @@ function Header() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="fixed bottom-0 left-0 right-0 border-t border-white/10 bg-[#0A0A0A]/80 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-4 text-center text-white/50">
-      </div>
-    </footer>
-  );
-}
+// function Footer() {
+//   return (
+//     <footer className="fixed bottom-0 left-0 right-0 border-t border-white/10 bg-[#0A0A0A]/80 backdrop-blur-sm">
+//       <div className="container mx-auto px-4 py-4 text-center text-white/50">
+//       </div>
+//     </footer>
+//   );
+// }
 
 function App() {
   return (
@@ -46,8 +46,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/response" element={<Response />} />
           </Routes>
+          
         </AnimatePresence>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );

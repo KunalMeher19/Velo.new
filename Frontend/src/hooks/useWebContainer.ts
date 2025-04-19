@@ -7,6 +7,14 @@ export function useWebContainer() {
     async function main() {
         const webcontainerInstance = await WebContainer.boot();
         setWebcontainer(webcontainerInstance)
+
+        const installProcess = await webcontainerInstance.spawn('npm', ['install']);
+        installProcess.output.pipeTo(new WritableStream({
+            write(data) {
+                console.log(data);
+            }
+        }));
+        
     }
     useEffect(() => {
         main();
