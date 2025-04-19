@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ListOrdered, Code2, Play, Send } from 'lucide-react';
+import { ListOrdered, Code2, Play, Send, Download } from 'lucide-react';
 import { StepsList } from '../components/StepsList';
 import { FileExplorer } from '../components/FileExplorer';
 import { TabView } from '../components/TabView';
@@ -13,6 +13,8 @@ import { BACKEND_URL } from '../config.ts';
 import { parseXml } from '../steps.ts';
 import { useWebContainer } from '../hooks/useWebContainer';
 import { Loader } from '../components/Loader';
+import { createZipFromFiles } from "../components/downloadZip.tsx";
+
 
 export function Response() {
   const location = useLocation();
@@ -123,7 +125,7 @@ export function Response() {
         };
       }
     };
-  
+
     return Object.fromEntries(files.map(file => [file.name, processFile(file)]));
   };
   useEffect(() => {
@@ -131,7 +133,7 @@ export function Response() {
     console.log(mountStructure);
     webcontainer?.mount(mountStructure);
   }, [files, webcontainer]);
-  
+
   // sending the Prompts and updating the status of the steps along the way
   async function init() {
     //
@@ -172,6 +174,17 @@ export function Response() {
   useEffect(() => {
     init();
   }, [])
+
+  const handleDownload = async () => {
+    const zipBlob = await createZipFromFiles(files);
+
+    const url = URL.createObjectURL(zipBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'project-files.zip';
+    link.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <motion.div
@@ -250,7 +263,7 @@ export function Response() {
               <button
                 className="absolute -top-2 right-3"
               >
-                <Loader/>
+                <Loader />
               </button>
             </form>}
             {!(loading || !templateSet) && <div className='flex'>
@@ -319,6 +332,13 @@ export function Response() {
               >
                 <Play className="w-4 h-4" />
                 Preview
+              </button>
+              <button
+                onClick={handleDownload}
+                className={`flex items-center gap-2 px-4 py-3 border-r border-white/10 text-white/70 hover:text-white`}
+              >
+                <Download className="w-4 h-4" />
+                Download
               </button>
             </div>
           </div>

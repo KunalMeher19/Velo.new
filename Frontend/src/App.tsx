@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Terminal, Github } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
@@ -14,7 +13,7 @@ function Header() {
           <span className="font-bold text-xl"></span>
         </div>
         <a
-          href="https://github.com/stackblitz/bolt"
+          href="https://github.com/new"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
