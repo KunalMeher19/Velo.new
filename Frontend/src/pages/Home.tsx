@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-function Home() {
+export function Home() {
   const [prompt, setPrompt] = useState('');
   const navigate = useNavigate();
 
@@ -54,5 +54,3 @@ function Home() {
     </motion.main>
   );
 }
-
-export default Home;

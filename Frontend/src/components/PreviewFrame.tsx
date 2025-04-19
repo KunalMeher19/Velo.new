@@ -7,31 +7,47 @@ interface PreviewFrameProps {
 }
 
 export function PreviewFrame({ files, webContainer }: PreviewFrameProps) {
-  // In a real implementation, this would compile and render the preview
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState<string>("");
 
-  async function main() {
-    if (!webContainer) {
-      console.warn("WebContainer not initialized.");
-      return;
-    }
-    await webContainer.spawn('npm', ['run', 'dev']);
-    webContainer.on('server-ready', (port, url) => {
-      console.log(port, url);
-      setUrl(url);
-    });
-  }
-  
   useEffect(() => {
-    main()
-  }, [])
+    async function initializePreview() {
+      if (!webContainer) {
+        console.warn("WebContainer not initialized.");
+        return;
+      }
+
+      try {
+        // Start the development server
+        await webContainer.spawn('npm', ['run', 'dev']);
+
+        webContainer.on('server-ready', (port, serverUrl) => {
+          console.log("Server ready on port:", port, "URL:", serverUrl);
+          setUrl(serverUrl);
+
+        });
+      } catch (error) {
+        console.error("Error initializing WebContainer:", error);
+      }
+    }
+
+    initializePreview();
+  }, [webContainer]);
 
   return (
     <div className="h-full flex items-center justify-center text-gray-400">
-      {!url && <div className="text-center">
-        <p className="mb-2">Loading...</p>
-      </div>}
-      {url && <iframe width={"100%"} height={"100%"} src={url} />}
+      {!url ? (
+        <div className="text-center">
+            <p className="mb-2 animate-pulse">Loading...</p>
+          <p></p>
+        </div>
+      ) : (
+        <iframe
+          width="100%"
+          height="100%"
+          src={url} // Use the reactive `url` state
+          title="Preview"
+        />
+      )}
     </div>
   );
 }

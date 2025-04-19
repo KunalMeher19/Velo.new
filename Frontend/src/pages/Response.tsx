@@ -132,6 +132,7 @@ export function Response() {
     webcontainer?.mount(mountStructure);
   }, [files, webcontainer]);
   
+  // sending the Prompts and updating the status of the steps along the way
   async function init() {
     //
     const response = await axios.post(`${BACKEND_URL}/template`, {
@@ -168,7 +169,6 @@ export function Response() {
 
     setLlmMessages(x => [...x, { role: "assistant", content: stepsResponse.data.response }])
   }
-
   useEffect(() => {
     init();
   }, [])
@@ -176,8 +176,8 @@ export function Response() {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 1, ease: 'easeIn' } }}
-      exit={{ opacity: 0, transition: { duration: 1, ease: 'easeIn' } }}
+      animate={{ opacity: 1, transition: { duration: 0.8, ease: 'easeIn' } }}
+      exit={{ opacity: 0, transition: { duration: 0.8, ease: 'easeIn' } }}
       className="px-2 h-[90vh] w-[100%]"
     >
       <div className="flex gap-6 h-[90vh]">
