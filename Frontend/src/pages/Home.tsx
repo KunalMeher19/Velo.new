@@ -28,7 +28,7 @@ export function Home() {
       </h1>
       
       <p className="text-white/70 text-center max-w-2xl mb-12 text-lg">
-        Meet your AI pair programmer. Ask questions, get explanations, and solve problems together.
+        Meet your AI pair programmer Velo.new. Ask questions, get explanations, and solve problems together.
       </p>
 
       <div className="w-full max-w-3xl">

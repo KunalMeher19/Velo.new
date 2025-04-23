@@ -17,6 +17,9 @@ export function PreviewFrame({ files, webContainer }: PreviewFrameProps) {
       }
 
       try {
+        // Ensure dependencies are installed
+        await webContainer.spawn('npm', ['install']);
+
         // Start the development server
         await webContainer.spawn('npm', ['run', 'dev']);
 

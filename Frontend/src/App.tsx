@@ -10,7 +10,7 @@ function Header() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Terminal className="w-6 h-6" />
-          <span className="font-bold text-xl"></span>
+          <span className="font-bold text-xl">Velo</span>
         </div>
         <a
           href="https://github.com/new"
