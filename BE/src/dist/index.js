@@ -28,6 +28,11 @@ if (!apiKey) {
 const ai = new generative_ai_1.GoogleGenerativeAI(apiKey);
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
+app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+    next();
+});
 app.use(express_1.default.json());
 app.use(express_1.default.static(path.join(__dirname, '../public')));
 /* connectDB(); */
