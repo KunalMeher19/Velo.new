@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { CheckCircle, Circle, Clock } from 'lucide-react';
 import { Step } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
 interface StepsListProps {
   steps: Step[];
@@ -57,7 +58,7 @@ export function StepsList({ steps, currentStep, onStepClick }: StepsListProps) {
       <div className="space-y-4">
         {steps.map((step) => (
           <MemoizedStepItem
-            key={step.id}
+            key={uuidv4()}
             step={step}
             currentStep={currentStep}
             onStepClick={handleStepClick}

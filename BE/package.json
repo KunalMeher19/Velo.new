@@ -11,11 +11,16 @@
   "description": "",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
+    "@google/genai": "^1.16.0",
+    "@google/generative-ai": "^0.24.1",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.6.1",
     "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.3",
     "typescript": "^5.7.2"
   }
 }
