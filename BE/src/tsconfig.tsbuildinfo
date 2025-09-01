@@ -1,0 +1,1 @@
+{"root":["./constants.ts","./db.ts","./index.ts","./prompts.ts","./stripindents.ts","./defaults/node.ts","./defaults/react.ts"],"version":"5.7.2"}
