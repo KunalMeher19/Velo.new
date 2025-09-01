@@ -11,7 +11,6 @@ export enum StepType {
 export interface Step {
   id: number;
   title: string;
-  uid: string;
   description: string;
   type: StepType;
   status: 'pending' | 'in-progress' | 'completed';
